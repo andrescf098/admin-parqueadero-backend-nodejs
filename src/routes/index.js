@@ -3,7 +3,7 @@ import employed from '../components/employed/network.js';
 import park from '../components/park/network.js';
 import user from '../components/user/network.js';
 import auth from '../components/auth/network.js';
-import vehiculo from '../components/vehicule/network.js';
+import vehicule from '../components/vehicule/network.js';
 
 const routerApi = (app) => {
   const router = express.Router();
@@ -12,7 +12,7 @@ const routerApi = (app) => {
   router.use('/park', park);
   router.use('/user', user);
   router.use('/auth', auth);
-  router.use('/vehiculo', vehiculo);
+  router.use('/vehicule', vehicule);
 };
 
 export default routerApi;

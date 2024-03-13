@@ -40,9 +40,8 @@ export const VehiculeSchema = {
   },
   timeExit: {
     field: 'time_exit',
-    allowNull: false,
     type: DataTypes.DATE,
-    defaultValue: Sequelize.NOW,
+    defaultValue: null,
   },
 };
 

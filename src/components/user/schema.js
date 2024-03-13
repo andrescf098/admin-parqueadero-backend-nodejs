@@ -6,18 +6,16 @@ const email = Joi.string().email();
 const password = Joi.string().min(6).max(50);
 const role = Joi.string().valid('user', 'admin');
 
-const getUserSchema = {
+export const getUserSchema = Joi.object({
   idUser: idUser.required(),
-};
-const createUserSchema = {
+});
+export const createUserSchema = Joi.object({
   idEmployed: idEmployed.required(),
   email: email.required(),
   password: password.required(),
-};
-const updateUserSchema = {
+});
+export const updateUserSchema = Joi.object({
   email,
   password,
   role,
-};
-
-export default { getUserSchema, createUserSchema, updateUserSchema };
+});

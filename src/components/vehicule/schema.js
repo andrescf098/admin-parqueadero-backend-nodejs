@@ -1,31 +1,23 @@
 import Joi from 'joi';
 
-const idVehiculo = Joi.number().integer();
+const idVehicule = Joi.string().min(6);
 const type = Joi.string().min(3).max(50);
-const ticket = Joi.number().integer();
 const observations = Joi.string().min(3).max(50);
-const idPlace = Joi.number().integer();
+const idPlace = Joi.string();
 const incoming = Joi.boolean();
 
-const getVehiculoSchema = {
-  idVehiculo: idVehiculo.required(),
-};
-const createVehiculoSchema = {
+export const getVehiculeSchema = Joi.object({
+  idVehicule: idVehicule.required(),
+});
+export const createVehiculeSchema = Joi.object({
+  idVehicule: idVehicule.required(),
   type: type.required(),
-  ticket: ticket.required(),
   observations: observations.required(),
   idPlace: idPlace.required(),
-};
-const updateVehiculoSchema = {
+});
+export const updateVehiculeSchema = Joi.object({
   type,
-  ticket,
   observations,
   idPlace,
   incoming,
-};
-
-export default {
-  getVehiculoSchema,
-  createVehiculoSchema,
-  updateVehiculoSchema,
-};
+});

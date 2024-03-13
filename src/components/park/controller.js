@@ -12,8 +12,8 @@ export class ParkingController {
   }
   async getById(req, res, next) {
     try {
-      const { id } = req.params;
-      return res.status(200).json(await service.findOne(id));
+      const { idPlace } = req.params;
+      return res.status(200).json(await service.findOne(idPlace));
     } catch (error) {
       next(error);
     }

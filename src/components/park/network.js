@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/', controller.list);
 router.get(
-  '/:id',
+  '/:idPlace',
   validatorHandler(getParkSchema, 'params'),
   controller.getById
 );

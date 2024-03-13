@@ -4,18 +4,18 @@ const id = Joi.number().integer();
 const name = Joi.string().min(3).max(50);
 const lastname = Joi.string().min(3).max(50);
 
-const getEmployedSchema = {
+const getEmployedSchema = Joi.object({
   id: id.required(),
-};
+});
 
-const createEmployedSchema = {
+const createEmployedSchema = Joi.object({
   name: name.required(),
   lastname: lastname.required(),
-};
-const updateEmployedSchema = {
+});
+const updateEmployedSchema = Joi.object({
   name,
   lastname,
-};
+});
 
 export default {
   getEmployedSchema,
