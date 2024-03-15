@@ -1,6 +1,7 @@
 import sequelize from '../../libs/sequelize.js';
 import boom from '@hapi/boom';
 import { ParkingService } from '../park/service.js';
+import { Sequelize } from 'sequelize';
 
 const models = sequelize.models;
 const serviceParking = new ParkingService();
@@ -18,13 +19,15 @@ export class VehiculeService {
     if (!vehicule) {
       const newVehicule = await models.Vehicule.create(data);
       await place.update({ placeAllow: false });
-      return newVehicule;
+      return { message: 'Vehicule registered', newVehicule };
     } else {
       const newVehicule = await vehicule.update({
         idPlace: idPlace,
+        createAt: Date.now(),
+        timeExit: null,
       });
       await place.update({ placeAllow: false });
-      return newVehicule;
+      return { message: 'Vehicule registered', newVehicule };
     }
   }
   async find() {
@@ -46,13 +49,13 @@ export class VehiculeService {
   async update(id, changes) {
     const vehicule = await this.findOne(id);
     const vehiculeUpdated = await vehicule.update(changes);
-    return vehiculeUpdated;
+    return {message: "Edit successful",vehiculeUpdated};
   }
   async exit(id) {
     const vehicule = await this.findOne(id);
     const idPlace = vehicule.idPlace;
     const place = await serviceParking.findOne(idPlace);
-    await vehicule.update({ incoming: false });
+    await vehicule.update({ incoming: false, timeExit: Date.now() });
     await place.update({ placeAllow: true });
     return { message: 'Vehicule exit' };
   }

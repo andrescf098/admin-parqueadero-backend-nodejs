@@ -10,6 +10,13 @@ export class ParkingController {
       next(error);
     }
   }
+  async available(req, res, next) {
+    try {
+      return res.status(200).json(await service.available());
+    } catch (error) {
+      next(error);
+    }
+  }
   async getById(req, res, next) {
     try {
       const { idPlace } = req.params;
@@ -35,8 +42,8 @@ export class ParkingController {
   }
   async delete(req, res, next) {
     try {
-      const { id } = req.params;
-      res.status(200).json(await service.delete(id));
+      const { idPlace } = req.params;
+      res.status(200).json(await service.delete(idPlace));
     } catch (error) {
       next(error);
     }

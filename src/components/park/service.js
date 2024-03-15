@@ -5,11 +5,20 @@ const models = sequelize.models;
 
 export class ParkingService {
   async create(data) {
+    const idPlace = data.idPlace;
+    const place = await models.Parking.findByPk(idPlace);
+    if (place) throw boom.badRequest('Place already exists');
     const newPlace = await models.Parking.create(data);
-    return newPlace;
+    return { message: 'Place created', newPlace };
   }
   async find() {
     const place = await models.Parking.findAll();
+    return place;
+  }
+  async available() {
+    const place = await models.Parking.findAll({
+      where: { placeAllow: true },
+    });
     return place;
   }
   async findOne(id) {
