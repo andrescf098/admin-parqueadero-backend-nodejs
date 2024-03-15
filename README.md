@@ -4,6 +4,10 @@
 
 The necessary module to work will be downloaded.
 
+### `get into the environment variables`
+
+You need to create the file .env on the src folder and put your environment variables.
+
 ### `npm run dev`
 
 Runs the app in the development mode.\
