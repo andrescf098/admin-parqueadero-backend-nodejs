@@ -2,10 +2,10 @@ import express from 'express';
 import { EmployedController } from './controller.js';
 import { validatorHandler } from '../../middleware/validator.handler.js';
 import {
-  getParkSchema,
-  createParkSchema,
-  updateParkSchema,
-} from '../park/schema.js';
+  getEmployedSchema,
+  createEmployedSchema,
+  updateEmployedSchema,
+} from './schema.js';
 
 const controller = new EmployedController();
 const router = express.Router();
@@ -13,21 +13,25 @@ const router = express.Router();
 router.get('/', controller.list);
 router.get(
   '/:id',
-  validatorHandler(getParkSchema, 'params'),
+  validatorHandler(getEmployedSchema, 'params'),
   controller.getById
 );
-router.post('/', validatorHandler(createParkSchema, 'body'), controller.create);
+router.post(
+  '/',
+  validatorHandler(createEmployedSchema, 'body'),
+  controller.create
+);
 router.patch(
   '/:id',
   [
-    validatorHandler(getParkSchema, 'params'),
-    validatorHandler(updateParkSchema, 'body'),
+    validatorHandler(getEmployedSchema, 'params'),
+    validatorHandler(updateEmployedSchema, 'body'),
   ],
   controller.update
 );
 router.delete(
   '/:id',
-  validatorHandler(getParkSchema, 'params'),
+  validatorHandler(getEmployedSchema, 'params'),
   controller.delete
 );
 

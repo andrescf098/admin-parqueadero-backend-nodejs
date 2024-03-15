@@ -46,6 +46,7 @@ export class User extends Model {
     this.belongsTo(models.Employed, {
       as: 'employed',
       foreignKey: 'idEmployed',
+      constraints: false,
     });
   }
   static config(sequelize) {

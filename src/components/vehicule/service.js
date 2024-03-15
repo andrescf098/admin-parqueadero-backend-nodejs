@@ -25,6 +25,7 @@ export class VehiculeService {
         idPlace: idPlace,
         createAt: Date.now(),
         timeExit: null,
+        incoming: true,
       });
       await place.update({ placeAllow: false });
       return { message: 'Vehicule registered', newVehicule };
@@ -49,7 +50,7 @@ export class VehiculeService {
   async update(id, changes) {
     const vehicule = await this.findOne(id);
     const vehiculeUpdated = await vehicule.update(changes);
-    return {message: "Edit successful",vehiculeUpdated};
+    return { message: 'Edit successful', vehiculeUpdated };
   }
   async exit(id) {
     const vehicule = await this.findOne(id);

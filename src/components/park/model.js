@@ -24,7 +24,11 @@ export const ParkingSchema = {
 
 export class Parking extends Model {
   static associate(models) {
-    this.hasOne(models.Vehicule, { as: 'vehicule', foreignKey: 'idPlace' });
+    this.hasOne(models.Vehicule, {
+      as: 'vehicule',
+      foreignKey: 'idPlace',
+      constraints: false,
+    });
   }
   static config(sequelize) {
     return {

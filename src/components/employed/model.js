@@ -27,7 +27,11 @@ export const EmployedSchema = {
 
 export class Employed extends Model {
   static associate(models) {
-    this.hasOne(models.User, { as: 'user', foreignKey: 'idEmployed' });
+    this.hasOne(models.User, {
+      as: 'user',
+      foreignKey: 'idEmployed',
+      constraints: false,
+    });
   }
   static config(sequelize) {
     return {

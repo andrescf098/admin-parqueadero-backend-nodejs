@@ -47,7 +47,11 @@ export const VehiculeSchema = {
 
 export class Vehicule extends Model {
   static associate(models) {
-    this.belongsTo(models.Parking, { as: 'parking', foreignKey: 'idPlace' });
+    this.belongsTo(models.Parking, {
+      as: 'parking',
+      foreignKey: 'idPlace',
+      constraints: false,
+    });
   }
   static config(sequelize) {
     return {
