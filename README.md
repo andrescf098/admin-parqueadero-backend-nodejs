@@ -11,7 +11,7 @@ You need to create the file .env on the src folder and put your environment vari
 ### `npm run dev`
 
 Runs the app in the development mode.\
-If you don't have specificate the PORT, the default PORT is 3000.\
+If you don't have specify the PORT, the default PORT is 3000.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
